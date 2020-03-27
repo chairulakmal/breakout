@@ -14,7 +14,7 @@ let ballRadius = 10;
 let x = canvas.width / 2;
 let y = canvas.height / 2;
 let dx = 2;
-let dy = -3;
+let dy = -2;
 
 // paddle
 let paddleHeight = 10;
@@ -110,7 +110,7 @@ function collisionDetection() {
           b.status = 0; // if collision happens change status to 0
           score++; // and add score by 1
           if (score == brickRowCount * brickColumnCount) {
-            alert("YOU WIN, CONGRATULATIONS!");
+            alert("KAMU MENANG, SELAMAT!");
             document.location.reload();
           }
         }
@@ -142,7 +142,7 @@ function drawBall() {
 function drawPaddle() {
   item.beginPath();
   item.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-  item.fillStyle = "#fff";
+  item.fillStyle = "yellow";
   item.fill();
   item.closePath();
 }
