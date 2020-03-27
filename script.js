@@ -5,38 +5,38 @@ function hideImage(id) {
 }
 
 
-let canvas = document.getElementById("breakoutCanvas");
-let item = canvas.getContext("2d");
+const canvas = document.getElementById("breakoutCanvas");
+const item = canvas.getContext("2d");
 
 
 // ball
-var ballRadius = 10;
-var x = canvas.width / 2;
-var y = canvas.height / 2;
-var dx = 2;
-var dy = -3;
+let ballRadius = 10;
+let x = canvas.width / 2;
+let y = canvas.height / 2;
+let dx = 2;
+let dy = -3;
 
 // paddle
-var paddleHeight = 10;
-var paddleWidth = 75;
-var paddleX = (canvas.width - paddleWidth) / 2;
+let paddleHeight = 10;
+let paddleWidth = 75;
+let paddleX = (canvas.width - paddleWidth) / 2;
 
 // controller
-var rightPressed = false;
-var leftPressed = false;
+let rightPressed = false;
+let leftPressed = false;
 
 // bricks
-var brickRowCount = 3;
-var brickColumnCount = 5;
-var brickWidth = 75;
-var brickHeight = 20;
-var brickPadding = 10;
-var brickOffsetTop = 30;
-var brickOffsetLeft = 33;
-var bricks = []; // array of bricks
+let brickRowCount = 3;
+let brickColumnCount = 10;
+let brickWidth = 50;
+let brickHeight = 20;
+let brickPadding = 10;
+let brickOffsetTop = 30;
+let brickOffsetLeft = 25;
+let bricks = []; // array of bricks
 for (let i = 0; i < brickColumnCount; i++) {
   bricks[i] = [];
-  for (var j = 0; j < brickRowCount; j++) {
+  for (let j = 0; j < brickRowCount; j++) {
     bricks[i][j] = bricks[i][j] = {
       x: 0,
       y: 0,
@@ -47,9 +47,9 @@ for (let i = 0; i < brickColumnCount; i++) {
 
 // score & lives
 
-var score = 0;
-var lives = 3;
-var play = false;
+let score = 0;
+let lives = 3;
+let play = false;
 
 
 
@@ -58,13 +58,14 @@ document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("mousemove", mouseMoveHandler, false);
 document.addEventListener('keydown', function(e) {
-  var key = e.keyCode;
+  let key = e.keyCode;
   if (key === 80) // p key on keyboard
   {
     togglePause();
   }
 });
 
+// play/pause
 function togglePause() {
   if (!play) {
     play = true; // play
@@ -77,7 +78,7 @@ function togglePause() {
 }
 
 function mouseMoveHandler(e) {
-  var relativeX = e.clientX - canvas.offsetLeft;
+  let relativeX = e.clientX - canvas.offsetLeft;
   if (relativeX > 0 && relativeX < canvas.width) {
     paddleX = relativeX - paddleWidth / 2;
   }
@@ -98,8 +99,6 @@ function keyUpHandler(e) {
     leftPressed = false;
   }
 }
-
-
 
 function collisionDetection() {
   for (let i = 0; i < brickColumnCount; i++) {
@@ -122,20 +121,20 @@ function collisionDetection() {
 
 function drawScore() {
   item.font = "16px Slabo 27px";
-  item.fillStyle = "#000000";
+  item.fillStyle = "#fff";
   item.fillText("Score: " + score, 12, 20);
 }
 
 function drawLives() {
   item.font = "16px S27pxlabo ";
-  item.fillStyle = "#000000";
+  item.fillStyle = "#fff";
   item.fillText("Lives: " + lives, canvas.width - 62, 20);
 }
 
 function drawBall() {
   item.beginPath();
   item.arc(x, y, ballRadius, 0, Math.PI * 2);
-  item.fillStyle = "#0095DD";
+  item.fillStyle = "#ccff00";
   item.fill();
   item.closePath();
 }
@@ -143,7 +142,7 @@ function drawBall() {
 function drawPaddle() {
   item.beginPath();
   item.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-  item.fillStyle = "#000000";
+  item.fillStyle = "#fff";
   item.fill();
   item.closePath();
 }
@@ -152,9 +151,9 @@ function drawBricks() {
   for (let i = 0; i < brickColumnCount; i++) {
     for (let j = 0; j < brickRowCount; j++) {
       if (bricks[i][j].status == 1) { // check for brick status
-        var brickX = (i * (brickWidth + brickPadding)) + brickOffsetLeft;
-        var brickY = (j * (brickHeight + brickPadding)) + brickOffsetTop;
-        bricks[i][j].x = brickX;
+        let brickX = (i * (brickWidth + brickPadding)) + brickOffsetLeft;
+        let brickY = (j * (brickHeight + brickPadding)) + brickOffsetTop;
+        bricks[i][j].x = brickX; // position each brick based on row & column
         bricks[i][j].y = brickY;
         item.beginPath();
         item.rect(brickX, brickY, brickWidth, brickHeight);
@@ -217,27 +216,3 @@ function draw() {
 
 
 draw();
-
-
-/*
-// red square
-ctx.beginPath();
-ctx.rect(20, 40, 50, 50);
-ctx.fillStyle = "#FF0000";
-ctx.fill();
-ctx.closePath();
-
-// green circle
-ctx.beginPath();
-ctx.arc(240, 160, 20, 0, Math.PI * 2, false);
-ctx.fillStyle = "green";
-ctx.fill();
-ctx.closePath();
-
-// blue rectangle
-ctx.beginPath();
-ctx.rect(180, 20, 100, 80);
-ctx.strokeStyle = "rgba(0, 0, 255, 0.5)";
-ctx.stroke();
-ctx.closePath();
-*/
