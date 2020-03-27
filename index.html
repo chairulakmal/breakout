@@ -1,33 +1,37 @@
-<!DOCTYPE html>
-<html>
+ <!DOCTYPE html>
+ <html>
 
-<head>
-  <meta charset="utf-8" />
-  <title>2D Breakout</title>
-  <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
+ <head>
+   <meta charset="utf-8" />
+   <title>2D Breakout</title>
+   <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+   <link rel="stylesheet" href="style.css">
+ </head>
 
-<body>
+ <body>
 
-  <img id="preview" src="preview.png" alt="Preview of 2D Breakout Game"><br>
+   <img id="preview" src="preview.png" alt="Preview of 2D Breakout Game"><br>
 
 
-  <canvas id="breakoutCanvas" width="480" height="320"></canvas>
+   <canvas id="breakoutCanvas" width="640" height="480"></canvas>
 
-  <script src="script.js"></script>
+   <script src="script.js"></script>
 
-  <h2> <button type="button" onclick="togglePause()">
-      Play/Pause</button></h2>
-  <p id="rule"><b>How to play</b>: Make sure the ball avoids the floor by moving your paddle. You can control the paddle by moving the mouse <i>cursor</i> or <i>left-right</i> arrow keys.
-    If you run out of lives or if you've won the game, you can always replay the game by refreshing (f5) your browser. <br /><br /> Hint:
-    You can also play or pause the game by hitting (p) on your keyboard.</p>
+   <h2> <button type="button" onclick="togglePause()">
+       Play/Pause</button></h2>
+   <p id="rule"><b>Cara bermain</b>: Pastikan bola tidak pernah menyentuh lantai dengan menggeser raket anda.
+     Anda dapat mengontrol raket dengan memindahkan <b><i>kursor</i></b>
+     tetikus atau dengan tombol arah <b><i>kiri-kanan</i></b>.
+     Anda mempunyai tiga nyawa di awal. Jika nyawa anda habis atau anda telah memenangkan pertandingan, anda bisa
+     bermain ulang dengan cara refresh (f5) penjelajah internet anda. <br /><br />
+     Hint: Anda juga bisa memulai atau menghentikan permainan dengan menekan tombol (p) di papan ketik. <br>
+     Jika game tidak dapat dimainkan coba refresh atau ganti penjelajah anda ke Firefox/Chrome.</p>
 
-  <footer>
-    <h5>copyleft <span class="copyleft">&copy;</span> 2020 by <a href="https://chairulakmal.github.io/">chairulakmal</a></h5><br />
-    <p>adapted from <a href="https://github.com/end3r/Canvas-gamedev-workshop">MDN material</a> by <a href="https://github.com/end3r">@end3r</a></p>
-  </footer>
+   <footer>
+     <h5>copyleft <span class="copyleft">&copy;</span> 2020 by <a href="https://chairulakmal.github.io/">chairulakmal</a></h5>
+     <h5>adapted from <a href="https://github.com/end3r/Canvas-gamedev-workshop">MDN material</a> by <a href="https://github.com/end3r">@end3r</a></h5>
+   </footer>
 
-</body>
+ </body>
 
-</html>
+ </html>
